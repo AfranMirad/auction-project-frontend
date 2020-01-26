@@ -1,7 +1,6 @@
-# Gallery
+# Auction
 
-Referans alınan bir proje üzerinden yapılan bir projedir.
-Bu projede kategoriler, ketagoriye göre işlerin listelenmesi, işlerin tamamını listelemesi ve referans listelenmesi kullanılmaktadır.
+auction-project servisinden beslenen bir arayüzdür. Temel basit işlemler gerçekleştirilmektedir. Projenin basitçe tanımı şu şekildedir: 3 kişi açık arttırmaya girer. Girilen her arttırma değeri diğerleri ile karşılaştırılıp sayfanın altına yazılmaktadır. Sayfanın en altında yer alan bölümde ise yeni arttırma için sayfayı temizlemektedir.
 
 ## Development server
 
