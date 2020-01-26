@@ -22,6 +22,6 @@ export class BidService {
     return this.http.get<Bid[]>("http://localhost:5000/delete")
   }
   getAdd(): Observable<Bid[]> {
-    return this.http.get<Bid[]>("http://localhost:5000/add",)
+    return this.http.get<Bid[]>("http://localhost:5000/add")
   }
 }
