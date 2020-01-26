@@ -1,5 +1,5 @@
 <div class="row">
-    <h2>Bid</h2>
+    <h2>Auction Bid</h2>
     <br><br>
     <div class="row">
         <div *ngFor="let hero of bids">
@@ -8,12 +8,13 @@
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <p class="card-text">Adı: {{hero.user_name | uppercase}} </p>
-                            <p class="card-text">Teklifi: {{hero.bid_price}}</p>
-                            Teklif Tarihi:
-                            <p class="card-text">{{hero.bid_date}}</p>
-                            Son Teklif Tarihi:
-                            <p class="card-text">{{hero.deadline}}</p>
+                            <p class="card-text"> User Name: {{hero.user_name | uppercase}} </p>
+                            <br>
+                            <p class="card-text"> Bid: {{hero.bid_price}}</p>
+                            <br>
+                            <p class="card-text"> Balance Time: {{hero.bid_date | date: 'dd/MM/yyyy'}}</p>
+                            <br>
+                            <p class="card-text">Deadline: {{hero.deadline | date: 'dd/MM/yyyy'}}</p>
                         </div>
                     </div>
                 </div>
@@ -21,16 +22,13 @@
             <ng-template #elseBlock>
                 <div class="col-md-4">
                     <form [formGroup]="bidsForm" (ngSubmit)="addBids(hero._id)">
+                        <p class="card-text"> {{hero.user_name | uppercase}}</p>
                         <div class="form-group">
-                            <label for="user_name" class="control-label">{{hero.user_name | uppercase}}</label>
+                            <input (keypress)="numberOnly($event)" formControlName="bidPrice" type="text"
+                                class="form-control" id="bid_price" name="bid_price" placeholder="xx.xx$">
                         </div>
                         <div class="form-group">
-                            <label for="bid_price" class="control-label">Teklifiniz</label>
-                            <input (keypress)="numberOnly($event)" formControlName="bidPrice" type="text" class="form-control" id="bid_price"
-                                name="bid_price" placeholder="12$">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Teklif Ver</button>
+                            <button type="submit" class="btn btn-primary">Place Bid</button>
                         </div>
                     </form>
                 </div>
@@ -38,38 +36,45 @@
         </div>
     </div>
     <br>
-    <br><br>
     <div class="row">
         <div class="col-md-12">
             <div align="center" class="p-3 mb-2 bg-primary text-white">
                 <ng-template [ngIf]="bids[0].bid_price > bids[1].bid_price && bids[0].bid_price > bids[2].bid_price ">
                     <div class="alert alert-primary">
-                        <p>Adı: {{bids[0].user_name}}</p>
-                        <p>Teklifi: {{bids[0].bid_price}}</p>
-                        <p>Teklif Tarihi: {{bids[0].bid_date}}</p>
-                        <p>Son Teklif Tarihi: {{bids[0].deadline}}</p>
+                        <p class="card-text"> User Name: {{bids[0].user_name | uppercase}}</p>
+                        <br>
+                        <p class="card-text"> Bid: {{bids[0].bid_price}}</p>
+                        <br>
+                        <p class="card-text"> Balance Time: {{bids[0].bid_date | date: 'dd/MM/yyyy'}}</p>
+                        <br>
+                        <p class="card-text">Deadline: {{bids[0].deadline | date: 'dd/MM/yyyy'}}</p>
                     </div>
                 </ng-template>
                 <ng-template [ngIf]="bids[1].bid_price > bids[0].bid_price && bids[1].bid_price > bids[2].bid_price ">
                     <div class="alert alert-primary">
-                        <p>Adı: {{bids[1].user_name}}</p>
-                        <p>Teklifi: {{bids[1].bid_price}}</p>
-                        <p>Teklif Tarihi: {{bids[1].bid_date}}</p>
-                        <p>Son Teklif Tarihi: {{bids[1].deadline}}</p>
+                        <p class="card-text"> User Name: {{bids[1].user_name | uppercase}}</p>
+                        <br>
+                        <p class="card-text"> Bid: {{bids[1].bid_price}}</p>
+                        <br>
+                        <p class="card-text"> Balance Time: {{bids[1].bid_date | date: 'dd/MM/yyyy'}}</p>
+                        <br>
+                        <p class="card-text">Deadline: {{bids[1].deadline | date: 'dd/MM/yyyy'}}</p>
                     </div>
                 </ng-template>
                 <ng-template [ngIf]="bids[2].bid_price > bids[0].bid_price && bids[2].bid_price > bids[1].bid_price ">
                     <div class="alert alert-primary">
-                        <p>Adı: {{bids[2].user_name}}</p>
-                        <p>Teklifi: {{bids[2].bid_price}}</p>
-                        <p>Teklif Tarihi: {{bids[2].bid_date}}</p>
-                        <p>Son Teklif Tarihi: {{bids[2].deadline}}</p>
+                        <p class="card-text"> User Name: {{bids[2].user_name | uppercase}}</p>
+                        <br>
+                        <p class="card-text"> Bid: {{bids[2].bid_price}}</p>
+                        <br>
+                        <p class="card-text"> Balance Time: {{bids[2].bid_date | date: 'dd/MM/yyyy'}}</p>
+                        <br>
+                        <p class="card-text">Deadline: {{bids[2].deadline | date: 'dd/MM/yyyy'}}</p>
                     </div>
                 </ng-template>
-                
             </div>
-            <div align="right" >
-                <button (click)="onClickMe()">Temizle!</button>
+            <div align="right">
+                <button (click)="onClickMe()">Restore</button>
             </div>
         </div>
     </div>
