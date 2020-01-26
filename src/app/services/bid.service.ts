@@ -16,13 +16,7 @@ export class BidService {
   }
 
   postBids(body, id) : Observable<any> {
-    return this.http.post("http://localhost:5000/"+id, body)
-      .pipe(
-        map((response : Response) => {
-          console.log("ulooo", response);
-          return response;
-        })
-      )
+    return this.http.post("http://localhost:5000/"+id, body);
   }
   deleteBids(): Observable<Bid[]> {
     return this.http.get<Bid[]>("http://localhost:5000/delete")

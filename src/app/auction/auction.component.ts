@@ -29,16 +29,13 @@ export class AuctionComponent implements OnInit {
   //Proje başlatıldığında çalıştırılan fonksiyon
   getBids() {
     this.bidService.getBids().subscribe(data => {
-      console.log(data)
-
       if (data.length == 0) {
-         this.bidService.getAdd().subscribe(data => {
-           console.log(data)
-           this.bids = data;
-         })
-         this.refresh();
+        this.bidService.getAdd().subscribe(data => {
+          this.bids = data;
+        })
+        this.refresh();
       }
-      else{
+      else {
         this.bids = data;
       }
     })
@@ -50,7 +47,6 @@ export class AuctionComponent implements OnInit {
     }
     this.bidService.postBids(body, id)
       .subscribe(response => {
-        console.log("uloo add true ", response);
         this.refresh();
       });
     this.f.bidPrice.setValue('');
@@ -58,7 +54,6 @@ export class AuctionComponent implements OnInit {
   //Html'den temizle button click gerçekleştiğinde çağrılan fonksiyon
   onClickMe() {
     this.bidService.deleteBids().subscribe(data => {
-      console.log(data);
       this.bids = data;
 
     });
